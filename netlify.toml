@@ -1,9 +1,9 @@
 [build]
-    command = "npm run build"
-    publish = "dist"
+	command = "npm run build"
+	publish = "dist"
 [dev]
-    command = "npm run serve" # Command to start your dev server
-    port = 80 # Port that the dev server will be accessible on
-    targetPort = 8080 # Port of target app server
-    publish = "dist" # If you use a _redirect file, provide the path to your static content folder
-    autoLaunch = true # a Boolean value that determines if Netlify Dev launches the local server address in your browser
+	command = "npm run serve" # Command to start your dev server
+	port = 80 # Port that the dev server will be accessible on
+	targetPort = 8080 # Port of target app server
+	publish = "dist" # If you use a _redirect file, provide the path to your static content folder
+	autoLaunch = true # a Boolean value that determines if Netlify Dev launches the local server address in your browser

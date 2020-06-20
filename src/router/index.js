@@ -5,22 +5,22 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Edit',
-    component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue')
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home
-  },
+	{
+		path: '/',
+		name: 'Edit',
+		component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue')
+	},
+	{
+		path: '/home',
+		name: 'Home',
+		component: Home
+	},
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
 
 export default router
