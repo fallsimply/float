@@ -14,6 +14,7 @@
 		width: 100%
 		min-height: 100%
 		margin: 0
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Open Sans', sans-serif
 	:root
 		// Hues
 		--hA: 220
@@ -29,11 +30,9 @@
 		--lL: 'calc(var(--l) * %s)' % (1 + $lDiff)
 		--lD: 'calc(var(--l) * %s)' % (1 - $lDiff)
 		// Lightness (Background)
-		--lBg:  'calc(var(--l) * %s)'   % (1 - (2 * $lDiff))
+		--lBg:  100%
 		--lBgL: 'calc(var(--lBg) * %s)' % (1 + $lDiff)
 		--lBgD: 'calc(var(--lBg) * %s)' % (1 - $lDiff)
-		
-
 	#nav
 		display: none
 </style>

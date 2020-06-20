@@ -9,5 +9,5 @@ module.exports = {
 			'simply.lan',
 			'simply.local',
 		],
-	}
+	},
 }

@@ -7,14 +7,14 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'Edit',
+    component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue')
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },
-  {
-    path: '/edit',
-    name: 'Edit',
-    component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue')
-  }
 ]
 
 const router = new VueRouter({

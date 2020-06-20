@@ -3,7 +3,7 @@
 </template>
 
 <script>
-	import Editor from "@/components/Editor.vue"
+	import Editor from "@/components/Editor"
 	export default {
 		name: "About",
 		components: {
