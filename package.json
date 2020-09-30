@@ -1,23 +1,24 @@
 {
-  "name": "float",
-  "version": "0.1.1",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
-  },
-  "dependencies": {
-    "core-js": "^3.6.4",
-    "vue": "^2.6.12",
-    "vue-router": "^3.4.5"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.6",
-    "@vue/cli-plugin-router": "^4.5.6",
-    "@vue/cli-service": "^4.5.6",
-    "netlify-cli": "^2.64.1",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.6.12"
-  }
+	"name": "float",
+	"version": "0.1.1",
+	"private": true,
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build --modern"
+	},
+	"dependencies": {
+		"@vue/cli": "^4.5.6",
+		"core-js": "^3.6.4",
+		"vue": "^2.6.12",
+		"vue-router": "^3.4.5"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "~4.3.0",
+		"@vue/cli-plugin-router": "~4.3.0",
+		"@vue/cli-service": "~4.3.0",
+		"netlify-cli": "^2.64.1",
+		"stylus": "^0.54.8",
+		"stylus-loader": "^3.0.2",
+		"vue-template-compiler": "^2.6.12"
+	}
 }

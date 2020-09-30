@@ -1,3 +1,15 @@
-> 5%
-last 2 versions
-not dead
+# Mobile / iOS
+last 2 iOS major versions
+
+# Mobile / Android
+last 3 Android major versions
+last 3 FirefoxAndroid major versions
+last 3 ChromeAndroid major versions
+
+# Desktop
+last 3 Chrome major versions
+last 3 Firefox major versions
+last 3 Edge major versions
+
+# Desktop / Apple
+last 2 Safari major versions

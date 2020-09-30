@@ -4,13 +4,19 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link rel="icon" href="<%= BASE_URL %>favicon.ico">
-		<style>[hidden]{display: none!important;}</style>
+		<link rel="icon" type="image/svg+xml" href="<%= BASE_URL %>favicon.svg">
+		<style>[hidden]{display: none!important;}[relative]{position: relative;}</style>
 		<title><%= htmlWebpackPlugin.options.title %></title>
+		<link rel="preload" href="<%= BASE_URL %>icons/general.svg" as="image">
+		<link rel="preload" href="<%= BASE_URL %>icons/format.svg" as="image">
+		<link rel="preload" href="<%= BASE_URL %>icons/headings.svg" as="image">
+		<link rel="preload" href="<%= BASE_URL %>icons/caret.svg" as="image">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+		
 	</head>
 	<body>
 		<noscript>
-			<strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+			<strong>Float doesn't work without JavaScript enabled. Please enable it to continue.</strong>
 		</noscript>
 		<div id="app"></div>
 		<!-- built files will be auto injected -->

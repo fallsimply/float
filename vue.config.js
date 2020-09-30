@@ -1,13 +1,25 @@
+const { hostname } = require("os")
+const path = require('path');
 module.exports = {
-	productionSourceMap: false,
+	// productionSourceMap: false,
 	devServer: {
 		host: "0.0.0.0",
 		port: 8080,
 		bonjour: true,
 		allowedHosts: [
-			'simply',
-			'simply.lan',
-			'simply.local',
+			// Local Dev Environment
+			hostname(),
+			`${hostname()}.lan`,
+			`${hostname()}.local`,
+			'.localhost'
+			// Github Codespaces
+			'.github.dev',
+			'.githubusercontent.com',
+			
 		],
 	},
+	css: {
+		sourceMap: true,
+	},
+	integrity: true
 }

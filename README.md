@@ -1,4 +1,5 @@
-# bolt
+# float
+a semi-modular rich text editor made using modern dom apis
 
 ## Project setup
 ```
