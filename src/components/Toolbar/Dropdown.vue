@@ -1,8 +1,10 @@
 <template>
 	<div class="dropdown" :open="false" :style="{'--ddItems': items}">
-		<button class="size" @click="menu" @blur="menu" x-ref="menu">
-			<slot name="Icon"/>
-		</button>
+		<Button icon class="size" @click="menu" @blur="menu" x-ref="menu">
+			<template #icon>
+				<slot name="Icon"/>
+			</template>
+		</Button>
 		<div ref="menu" class="menu" :hidden="true" :vertical="vertical">
 			<slot name="Items" :item="item"/>
 		</div>
@@ -10,8 +12,12 @@
 </template>
 
 <script>
+import Core from "@/components/Core/"
 export default {
 	name: "ToolbarDropdown",
+	components: {
+		...Core
+	},
 	methods: {
 		// ui methods
 		menu(e) {
@@ -32,14 +38,14 @@ export default {
 			type: Number,
 			required: true,
 			validator: function (value) {
-        		return value >= 0
-      		}
+				return value >= 0
+	  		}
 		},
 		vertical: {
 			type: Boolean,
 			default: false,
 		}
-	}
+	},
 }
 </script>
 

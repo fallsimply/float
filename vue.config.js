@@ -1,5 +1,5 @@
-const { hostname } = require("os")
-const path = require('path');
+const { hostname } = require("os");
+const path = require("path");
 module.exports = {
 	// productionSourceMap: false,
 	devServer: {
@@ -11,15 +11,12 @@ module.exports = {
 			hostname(),
 			`${hostname()}.lan`,
 			`${hostname()}.local`,
-			'.localhost'
+			".localhost",
 			// Github Codespaces
-			'.github.dev',
-			'.githubusercontent.com',
-			
-		],
+			".github.dev",
+			".githubusercontent.com"
+		]
 	},
-	css: {
-		sourceMap: true,
-	},
-	integrity: true
-}
+	integrity: true,
+	productionSourceMap: false
+};

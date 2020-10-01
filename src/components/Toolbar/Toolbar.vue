@@ -1,36 +1,41 @@
 <template>
 	<div relative>
-		<div class="toolbar">
-			<button v-for="btn in btns" :key="btn" :class="btn" @click="$emit(btn)">
-				<Icon :name="btn" pack="format"/>
-			</button>
-			<button class="link" ref="link" @click="togglePrompt('link')" @blur="togglePrompt('link')">
-				<Icon name="link"/>
-			</button>
+		<ButtonGroup class="toolbar">
+			<Button icon v-for="btn in btns" :key="btn"  @click="$emit(btn)">
+				<template #icon>
+					<Icon :name="btn" pack="format"/>
+				</template>
+			</Button>
+			<Button icon ref="link" @click="togglePrompt('link')">
+				<template #icon>
+					<Icon name="link"/>
+				</template>
+			</Button>
 			<Dropdown :items="headings.length" @select="$emit('size', $event)">
 				<template #Icon>
 					<Icon name="text_size" pack="format" caret/>
 				</template>
 				<template #Items="{ item }">
 					<span v-for="num in headings" :key="num">
-						<button :class="`h${num}`" @click.stop="item($event)" :x-val="`h${num}`">
+						<Button icon :class="`h${num}`" @click.stop="item($event)" :x-val="`h${num}`">
 							<Icon pack="headings" :name="`h${num}`"/>
-						</button>
+						</Button>
 					</span>
 				</template>
 			</Dropdown>
-			<button class="theme" ref="theme" >
-				<Icon name="link"/>
-			</button>
-		</div>
+			<Button icon class="theme" ref="theme" >
+				<template #icon>
+					<Icon name="link"/>
+				</template>
+			</Button>
+		</ButtonGroup>
 		<Prompt title= "Enter Link URL" :show.sync="prompts.link"/>
 	</div>
 </template>
 
 <script>
-	import Dropdown  from '@/components/Toolbar/Dropdown'
-	import Icon from "@/components/Core/Icon"
-	import Prompt from "@/components/Toolbar/Prompt"
+	import Core, {ButtonGroup} from "@/components/Core"
+	import { Dropdown, Prompt } from "@/components/Toolbar"
 	export default {
 		name: "Toolbar",
 		data() {
@@ -49,9 +54,10 @@
 				}
 			}
 		},
-        components: {
+		components: {
+			...Core,
+			ButtonGroup,
 			Dropdown,
-			Icon,
 			Prompt,
 		},
 		methods: {
@@ -83,12 +89,12 @@ HSL(h, s = var(--s), l = var(--l)) {'hsl(%s, %s, %s)' % (h s l)};
 		--H: var(--hD)
 
 	button
-		height: 2rem
-		min-width: 2rem
-		font-size: 1.5rem
-		border: 0
-		padding: .25rem
-		border-radius: .25rem
+		// height: 2rem
+		// min-width: 2rem
+		// font-size: 1.5rem
+		// border: 0
+		// padding: .25rem
+		// border-radius: .25rem
 		display: grid
 		grid-template-columns: repeat(auto-fit, minmax(.75rem, 1.5rem))
 		background: HSL(var(--H), l: var(--L))
@@ -98,9 +104,9 @@ HSL(h, s = var(--s), l = var(--l)) {'hsl(%s, %s, %s)' % (h s l)};
 			--L: var(--lL)
 		&:focus
 			outline: none
-		svg
-			height: 1.5rem;
-			border-radius: .25rem
-		svg > path
-			fill: currentColor
+		// svg
+		// 	height: 1.5rem;
+		// 	border-radius: .25rem
+		// svg > path
+		// 	fill: currentColor
 </style>

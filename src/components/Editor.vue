@@ -1,36 +1,16 @@
 <template>
-	<div style="padding: 1.5rem">
-		<div class="editor">
-			<Toolbar/>
-			<div ref="e" class="content" contenteditable="true"></div>
-		</div>
-		<ButtonGroup style="position: relative;top: 1rem">
-			<Button>
-				<template #icon>
-					<Icon name="done"/>
-				</template>
-				<template>
-					Done
-				</template>
-			</Button>
-			<Button secondary/>
-		</ButtonGroup>
-		<Button>Switch Theme</Button>
+	<div class="editor">
+		<Toolbar/>
+		<div ref="e" class="content" contenteditable="true"></div>
 	</div>
 </template>
 
 <script>
-	import Button from "@/components/Core/Button";
-	import ButtonGroup from "@/components/Core/ButtonGroup";
-	import Toolbar from "@/components/Toolbar/Toolbar";
-	import Icon from "@/components/Core/Icon"
+	import Toolbar from "@/components/Toolbar"
 	export default {
 		name: "Editor",
 		components: {
-			Toolbar,
-			Button,
-			ButtonGroup,
-			Icon
+			Toolbar
 		},
 		mounted() {
 			this.$refs["e"].innerHTML = "<div>Hello World hello world HeLlO wOrLd hello world Hello World</div>"
@@ -112,6 +92,6 @@ HSL(h, s = var(--s), l = var(--l)) {'hsl(%s, %s, %s)' % (h s l)};
 			color: #5D7198
 	.editor::after
 		content: hi
-.editor
+.editor > .content
 	--txtColor: HSL(var(--hBg), l: var(--lH))
 </style>
