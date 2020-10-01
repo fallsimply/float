@@ -22,7 +22,10 @@ html, body
 	font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Open Sans', sans-serif
 button, h1, h2, h3, h4, h5, h6
 	font-family: inherit
-:root, body[light]
+#nav
+	display: none
+
+body
 	/* Hues */
 	--hA: 220
 	--hB: 184
@@ -50,23 +53,29 @@ button, h1, h2, h3, h4, h5, h6
 	--txtColor: HSL(var(--hBg), l: 100%)
 
 	/* Button Color */
-	--btnBg: HSL(var(--hBg), l: var(-lL))
+	--btnBg: HSL(var(--hBg), l: var(--lH))
+	--btnText: var(--btnBg)
+	--btnFocus: HSL(var(--hBg), l: var(--lL))
 
 	/* Background */
-	--bgPrimary: HSL(var(--hBg), l: var(--lBgD))
+	--bgPrimary: HSL(var(--hBg), l: var(--lBgL))
 	--bgCard: HSL(var(--hBg), l: 100%)
-#nav
-	display: none
+
+	/* Alpha Overlay */
+	--brightenColor: HSLA(0, 0%, 100%, .2)
+	--brigthen: linear-gradient(var(--brightenColor), var(--brightenColor))
+
 @media (prefers-color-scheme: dark)
-	:root
+	body:not(light)
 		--lBg: 24%
 
-		--txtColor: HSL(var(--hBg), l: 100%)
+		--btnText: var(--txtColor)
+		--btnFocus: var(--txtColor)
+		--btnTxtHover: HSLA(var(--hBg), l: 100%, a: .25)
 
-		--btnBg: HSL(var(--hBg), l: var(--lH))
+		--bgPrimary: HSL(var(--hA), l: var(--lBgD))
+		--bgCard: HSL(var(--hBg), l: var(--lBg))
 
-		--bgPrimary: HSL(var(--hBg), l: var(--lBgH))
-		--bgCard: HSL(219, 24%, 24%)
 body
 	background: var(--bgPrimary)
 </style>
