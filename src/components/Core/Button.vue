@@ -1,6 +1,6 @@
 <template>
-	<button class="exit" :primary="!secondary" :secondary="secondary" :icon="icon">
-		<slot name="icon">
+	<button :primary="!secondary" :secondary="secondary" :icon="icon">
+		<slot name="Icon">
 			<Icon pack="general" name="close"/>
 		</slot>
 		<slot v-if="!icon">Close</slot>
@@ -22,7 +22,7 @@ export default {
 		}
 	},
 	components: {
-		Icon
+		Icon,
 	}
 }
 </script>
@@ -35,7 +35,6 @@ button
 	border-radius: .25rem
 	display: grid
 	grid-auto-flow: column
-	grid-template-columns: 1.5rem 1fr
 	grid-gap: .25rem
 	svg
 		height: 1.5rem

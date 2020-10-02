@@ -4,13 +4,13 @@
 		<input type="text" v-model="url">
 		<ButtonGroup>
 			<Button>
-				<template #icon>
+				<template #Icon>
 					<Icon pack="general" name="done"/>
 				</template>
 				Add Link
 			</Button>
-			<Button secondary @click="toggle">
-				<template #icon>
+			<Button secondary @click.native="toggle">
+				<template #Icon>
 					<Icon pack="general" name="close"/>
 				</template>
 				Close

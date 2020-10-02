@@ -1,13 +1,13 @@
 <template>
 	<div relative>
 		<ButtonGroup class="toolbar">
-			<Button icon v-for="btn in btns" :key="btn"  @click="$emit(btn)">
-				<template #icon>
+			<Button icon v-for="btn in btns" :key="btn"  @click.native="$emit(btn)">
+				<template #Icon>
 					<Icon :name="btn" pack="format"/>
 				</template>
 			</Button>
 			<Button icon ref="link" @click="togglePrompt('link')">
-				<template #icon>
+				<template #Icon>
 					<Icon name="link"/>
 				</template>
 			</Button>
@@ -15,26 +15,21 @@
 				<template #Icon>
 					<Icon name="text_size" pack="format" caret/>
 				</template>
-				<template #Items="{ item }">
-					<span v-for="num in headings" :key="num">
-						<Button icon :class="`h${num}`" @click.stop="item($event)" :x-val="`h${num}`">
+				<template v-slot="{ handle }">
+					<Button icon :class="`h${num}`" @click.stop.native="handle($event)" :x-val="`h${num}`" v-for="num in headings" :key="num">
+						<template #Icon>
 							<Icon pack="headings" :name="`h${num}`"/>
-						</Button>
-					</span>
+						</template>
+					</Button>
 				</template>
 			</Dropdown>
-			<Button icon class="theme" ref="theme" >
-				<template #icon>
-					<Icon name="link"/>
-				</template>
-			</Button>
 		</ButtonGroup>
-		<Prompt title= "Enter Link URL" :show.sync="prompts.link"/>
+		<Prompt title= "Enter Link URL" :show.sync="prompts.link" style="top: 3rem"/>
 	</div>
 </template>
 
 <script>
-	import Core, {ButtonGroup} from "@/components/Core"
+	import Core, { ButtonGroup } from "@/components/Core"
 	import { Dropdown, Prompt } from "@/components/Toolbar"
 	export default {
 		name: "Toolbar",
@@ -78,6 +73,7 @@ HSL(h, s = var(--s), l = var(--l)) {'hsl(%s, %s, %s)' % (h s l)};
 	grid-template-columns: repeat(auto-fit, minmax(2rem, min-content))
 	grid-gap: 1rem
 	color: #fff
+	--btnFocus: #fff
 
 	& > :nth-child(4n-3)
 		--H: var(--hA)
@@ -89,24 +85,10 @@ HSL(h, s = var(--s), l = var(--l)) {'hsl(%s, %s, %s)' % (h s l)};
 		--H: var(--hD)
 
 	button
-		// height: 2rem
-		// min-width: 2rem
-		// font-size: 1.5rem
-		// border: 0
-		// padding: .25rem
-		// border-radius: .25rem
-		display: grid
-		grid-template-columns: repeat(auto-fit, minmax(.75rem, 1.5rem))
 		background: HSL(var(--H), l: var(--L))
 		--L: var(--l)
-		color: inherit
 		&:hover
 			--L: var(--lL)
-		&:focus
-			outline: none
-		// svg
-		// 	height: 1.5rem;
-		// 	border-radius: .25rem
-		// svg > path
-		// 	fill: currentColor
+.toolbar.buttonGroup
+		grid-gap: 1rem
 </style>

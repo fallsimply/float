@@ -25,4 +25,5 @@ div.buttonGroup
 		padding: .125rem
 	button:hover
 		background-image: var(--brighten)
+		--lH: var(--lL)
 </style>

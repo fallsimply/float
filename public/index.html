@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<link rel="icon" type="image/svg+xml" href="<%= BASE_URL %>favicon.svg">
-		<style>[hidden]{display: none!important;}[relative]{position: relative;}</style>
+		<style>[hidden]{display: none!important;}[relative]{position: relative;}[svg-hide]{position: absolute; width: 0; height: 0;}</style>
 		<title><%= htmlWebpackPlugin.options.title %></title>
 		<link rel="preload" href="<%= BASE_URL %>icons/general.svg" as="image">
 		<link rel="preload" href="<%= BASE_URL %>icons/format.svg" as="image">
@@ -18,6 +18,7 @@
 		<noscript>
 			<strong>Float doesn't work without JavaScript enabled. Please enable it to continue.</strong>
 		</noscript>
+		<svg viewBox="0 0 12 24" xmlns="http://www.w3.org/2000/svg" id="caret" svg-hide><path d="M5.64645 14.6464L0.853553 9.85355C0.538571 9.53857 0.761654 9 1.20711 9H10.7929C11.2383 9 11.4614 9.53857 11.1464 9.85355L6.35355 14.6464C6.15829 14.8417 5.84171 14.8417 5.64645 14.6464Z"/></svg>
 		<div id="app"></div>
 		<!-- built files will be auto injected -->
 	</body>
