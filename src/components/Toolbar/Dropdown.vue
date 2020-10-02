@@ -1,37 +1,41 @@
 <template>
-	<div class="dropdown" :open="false" :style="{'--ddItems': items}">
-		<Button icon class="size" @click="menu" @blur="menu" x-ref="menu">
-			<template #icon>
+	<div class="dropdown" :open="open" :style="{'--ddItems': items}">
+		<Button icon @click.native="toggle">
+			<template #Icon>
 				<slot name="Icon"/>
 			</template>
 		</Button>
-		<div ref="menu" class="menu" :hidden="true" :vertical="vertical">
-			<slot name="Items" :item="item"/>
-		</div>
+		<ButtonGroup ref="contents" :hidden="!show" :vertical="vertical">
+			<slot :handle="handle"/>
+		</ButtonGroup>
 	</div>
 </template>
 
 <script>
-import Core from "@/components/Core/"
+import Core, { ButtonGroup } from "@/components/Core/"
 export default {
 	name: "ToolbarDropdown",
 	components: {
-		...Core
+		...Core,
+		ButtonGroup
+	},
+	data() {
+		return {
+			open: false,
+			show: false
+		}
 	},
 	methods: {
 		// ui methods
-		menu(e) {
-			let ref = e.currentTarget.getAttribute("x-ref")
-			if (ref != undefined) {
-				this.$refs[ref].toggleAttribute("hidden")
-				this.$refs[ref].parentElement.toggleAttribute("open")
-			}
+		toggle() {
+			this.open = !this.open
+			this.show = !this.show
 		},
-		item(e) {
-			console.log(e)
+		handle(e) {
+			this.toggle()
 			let target = e.target.parentElement
 			this.$emit("select", target.getAttribute("x-val"))
-		}
+		},
 	},
 	props: {
 		items: {
@@ -59,38 +63,23 @@ HSL(h, s = var(--s), l = var(--l)) {'hsl(%s, %s, %s)' % (h s l)};
 		transform: rotateX(180deg)
 	& > button
 		width: 2.75rem
-		background: #f0ff0f
-		background: HSL(var(--H), l: var(--L));
 		svg
 			#caret
 				transform-origin: center;
 				transition: transform .2s;
-	div.menu
-		display: grid
-		grid-gap: .25rem
+	.buttonGroup
 		background: HSL(var(--H), l: var(--L))
-		border-radius: .25rem
-		margin: 1rem 0
+		grid-template-columns: repeat(auto-fit, 2rem)
+		grid-auto-flow: column
 		padding: .25rem
-		position: absolute
-		top: 100%
-		left: 50%
-		transform: translateX(-50%)
-		z-index: 4
-		button
-			padding: 0
-			min-width: unset
-			width: 1.5rem
-			height: 1.5rem
-			&:hover
-				background: HSL(var(--H), l: var(--lL))
-	div.menu:not([vertical])
-		grid-template-columns: repeat(var(--ddItems), minmax(1.5rem, min-content))
-		grid-template-rows: 1.5rem
-	div.menu[vertical]
-		grid-template-columns: 36px
-		grid-template-rows: repeat(var(--ddItems), minmax(1.5rem, min-content))
-		button 
-			padding: 0 6px
-			width: 100%
+		border-radius: .25rem
+		width: max-content
+		grid-gap: .25rem
+		
+		position: relative
+		top: 1rem
+	.buttonGroup[vertical]
+		grid-template-columns: unset
+		grid-template-rows: repeat(auto-fit, 2rem)
+		height: max-content
 </style>
