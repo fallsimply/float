@@ -1,12 +1,37 @@
 <template>
 	<div id="app">
-		<div id="nav">
-			<router-link to="/">Home</router-link> |
-			<router-link to="/about">Editor</router-link>
-		</div>
+		<ButtonGroup class="logoWrapper">
+			<LogoHeader/>
+			<Button @click.native="toggleTheme">
+				<template #Icon>
+					<Icon name="icon" pack="toggle"/>
+				</template>
+				Switch Theme
+			</Button>
+		</ButtonGroup>
 		<router-view/>
 	</div>
 </template>
+
+<script>
+import Core, { ButtonGroup } from "@/components/Core"
+import LogoHeader from "@/components/Header"
+export default {
+	components: {
+		...Core,
+		ButtonGroup,
+		LogoHeader
+	},
+	methods: {
+		toggleTheme() {
+				window.Theme.toggle();
+		},
+		clearTheme() {
+			window.Theme.clearTheme();
+		}
+	}
+}
+</script>
 
 <style lang="stylus">
 /* Variables */
@@ -55,7 +80,7 @@ body
 	/* Button Color */
 	--btnBg: HSL(var(--hBg), l: var(--lH))
 	--btnText: var(--btnBg)
-	--btnFocus: HSL(var(--hBg), l: var(--lL))
+	--btnFocus: HSL(var(--hA), l: 66%)
 
 	/* Background */
 	--bgPrimary: HSL(var(--hBg), l: var(--lBgL))
@@ -63,10 +88,10 @@ body
 
 	/* Alpha Overlay */
 	--brightenColor: HSLA(0, 0%, 100%, .2)
-	--brigthen: linear-gradient(var(--brightenColor), var(--brightenColor))
+	--brighten: linear-gradient(var(--brightenColor), var(--brightenColor))
 
 @media (prefers-color-scheme: dark)
-	body:not(light)
+	body:not([light])
 		--lBg: 24%
 
 		--btnText: var(--txtColor)
@@ -78,4 +103,14 @@ body
 
 body
 	background: var(--bgPrimary)
+
+#app
+	padding: 1.5rem
+	display: grid
+	grid-gap: 1.5rem
+
+.logoWrapper
+	grid-gap: unset
+	display: flex
+	justify-content: space-between
 </style>

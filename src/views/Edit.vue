@@ -1,20 +1,16 @@
 <template>
-	<div view="edit" style="padding: 1.5rem">
+	<div view="edit">
 		<Editor/>
 		<ButtonGroup style="position: relative;top: 1rem">
 			<Button>
-				<template #icon>
+				<template #Icon>
 					<Icon name="done"/>
 				</template>
-				<template>
-					Done
-				</template>
+				Done
 			</Button>
 			<Button secondary/>
 		</ButtonGroup>
-		<ButtonGroup style="position: relative;top: 1rem">
-			<Button @click="window.Theme.toggle()">Switch Theme</Button>
-		</ButtonGroup>
+
 	</div>
 </template>
 
