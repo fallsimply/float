@@ -17,7 +17,7 @@
 import Logo from "@/components/Logo"
 import Core, { ButtonGroup } from "@/components/Core"
 export default {
-	name: "Header",
+	name: "FloatHeader",
 	components: {
 		Logo,
 		...Core,
