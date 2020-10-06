@@ -33,12 +33,12 @@ button
 	font-size: 1rem
 	line-height: 1.5rem
 	border-radius: .25rem
-	display: grid
-	grid-auto-flow: column
-	grid-gap: .25rem
+	display: flex
+	margin: 0
 	svg
 		height: 1.5rem
 		height: 1.5rem
+		padding-right: .25rem
 button[primary]
 	background: var(--btnBg)
 	color: var(--txtColor)
@@ -47,6 +47,11 @@ button[secondary]
 	background: transparent
 	border: none
 	color: var(--btnText)
+button:not([icon])
+	width: calc(100% + .25rem)
+	justify-content: space-between
 button[icon]
 	padding: .25rem
+	svg
+		padding-right: 0
 </style>
