@@ -18,12 +18,11 @@ export default {
 #color {
 	fill: none;
 }
-@media (prefers-color-scheme: dark) {
-	body:not([light]) #stroke {
-		fill: #ffffff;
-	}
-	body:not([light]) #color {
-		fill: #5D7198;
-	}
+
+body:not([light]) #stroke {
+	fill: #ffffff;
+}
+body:not([light]) #color {
+	fill: #5D7198;
 }
 </style>

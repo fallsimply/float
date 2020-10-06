@@ -9,12 +9,11 @@ export default class {
 		this._value = localStorage.getItem("theme")
 		switch (this._value) {
 			case "system":
+				window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this._themeEventHandler)
 				break
 			case "light":
 			case "dark":
-				document.body.removeAttribute("light")
-				document.body.removeAttribute("dark")
-				document.body.setAttribute(this._value, "")
+				this._handleDom(this._value)
 				break
 			default:
 				localStorage.setItem("theme", "system")
@@ -33,7 +32,22 @@ export default class {
 		}
 	}
 
+	_handleDom(theme) {
+		document.body.removeAttribute("light")
+		document.body.removeAttribute("dark")
+		document.body.setAttribute(theme, "")
+	}
+
+	_themeEventHandler() {
+		window.matchMedia("(prefers-color-scheme: dark)") 
+					? "dark"
+					: "light"
+	}
+
 	set theme(newValue) {
+		if (this._value = "system") {
+			window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", this._themeEventHandler)
+		}
 		localStorage.setItem("theme", newValue)
 		this.update()
 	}
@@ -55,4 +69,6 @@ export default class {
 					? "dark"
 					: "light"
 	}
+
+
 }

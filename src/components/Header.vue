@@ -1,16 +1,35 @@
 <template>
-	<div class="logoHeader" style="display: flex">
-			<Logo style="width: 2rem; height: 2rem"/>
-			<h1>float editor</h1>
-	</div>
+	<ButtonGroup class="logoWrapper" style="justify-content: space-between">
+		<div class="logoHeader" style="display: flex">
+				<Logo style="width: 2rem; height: 2rem"/>
+				<h1>float editor</h1>
+		</div>
+		<Button @click.native="toggleTheme">
+				<template #Icon>
+					<Icon name="icon" pack="toggle"/>
+				</template>
+				Switch Theme
+			</Button>
+	</ButtonGroup>
 </template>
 
 <script>
 import Logo from "@/components/Logo"
+import Core, { ButtonGroup } from "@/components/Core"
 export default {
 	name: "Header",
 	components: {
-		Logo
+		Logo,
+		...Core,
+		ButtonGroup,
+	},
+	methods: {
+		toggleTheme() {
+				window.Theme.toggle();
+		},
+		clearTheme() {
+			window.Theme.clearTheme();
+		}
 	}
 }
 </script>

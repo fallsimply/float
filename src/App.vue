@@ -1,34 +1,15 @@
 <template>
 	<div id="app">
-		<ButtonGroup class="logoWrapper">
-			<LogoHeader/>
-			<Button @click.native="toggleTheme">
-				<template #Icon>
-					<Icon name="icon" pack="toggle"/>
-				</template>
-				Switch Theme
-			</Button>
-		</ButtonGroup>
+		<LogoHeader/>
 		<router-view/>
 	</div>
 </template>
 
 <script>
-import Core, { ButtonGroup } from "@/components/Core"
 import LogoHeader from "@/components/Header"
 export default {
 	components: {
-		...Core,
-		ButtonGroup,
 		LogoHeader
-	},
-	methods: {
-		toggleTheme() {
-				window.Theme.toggle();
-		},
-		clearTheme() {
-			window.Theme.clearTheme();
-		}
 	}
 }
 </script>
@@ -90,16 +71,15 @@ body
 	--brightenColor: HSLA(0, 0%, 100%, .2)
 	--brighten: linear-gradient(var(--brightenColor), var(--brightenColor))
 
-@media (prefers-color-scheme: dark)
-	body:not([light])
-		--lBg: 24%
+body:not([light])
+	--lBg: 24%
 
-		--btnText: var(--txtColor)
-		--btnFocus: var(--txtColor)
-		--btnTxtHover: HSLA(var(--hBg), l: 100%, a: .25)
+	--btnText: var(--txtColor)
+	--btnFocus: var(--txtColor)
+	--btnTxtHover: HSLA(var(--hBg), l: 100%, a: .25)
 
-		--bgPrimary: HSL(var(--hA), l: var(--lBgD))
-		--bgCard: HSL(var(--hBg), l: var(--lBg))
+	--bgPrimary: HSL(var(--hA), l: var(--lBgD))
+	--bgCard: HSL(var(--hBg), l: var(--lBg))
 
 body
 	background: var(--bgPrimary)
@@ -108,9 +88,4 @@ body
 	padding: 1.5rem
 	display: grid
 	grid-gap: 1.5rem
-
-.logoWrapper
-	grid-gap: unset
-	display: flex
-	justify-content: space-between
 </style>
