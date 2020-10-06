@@ -1,13 +1,15 @@
 <template>
 	<div class="dropdown" :open="open" :style="{'--ddItems': items}">
-		<Button icon @click.native="toggle">
-			<template #Icon>
-				<slot name="Icon"/>
-			</template>
-		</Button>
-		<ButtonGroup ref="contents" :hidden="!show" :vertical="vertical">
-			<slot :handle="handle"/>
-		</ButtonGroup>
+		<div class="touchTarget" @click.self="toggle">
+			<Button icon @click.native="toggle">
+				<template #Icon>
+					<slot name="Icon"/>
+				</template>
+			</Button>
+			<ButtonGroup ref="contents" :hidden="!show" :vertical="vertical">
+				<slot :handle="handle"/>
+			</ButtonGroup>
+		</div>
 	</div>
 </template>
 
@@ -77,9 +79,14 @@ HSL(h, s = var(--s), l = var(--l)) {'hsl(%s, %s, %s)' % (h s l)};
 		grid-gap: .25rem
 		
 		position: relative
-		top: 1rem
+		margin-top: 1rem
 	.buttonGroup[vertical]
 		grid-template-columns: unset
 		grid-template-rows: repeat(auto-fit, 2rem)
 		height: max-content
+	.touchTarget
+		width: max-content
+		height: max-content
+		margin: -1rem -3rem
+		padding: 1rem 3rem
 </style>
