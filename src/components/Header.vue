@@ -4,24 +4,25 @@
 				<Logo style="width: 2rem; height: 2rem"/>
 				<h1>float editor</h1>
 		</div>
-		<Button @click.native="toggleTheme">
+		<Dropdown @click.native="toggleTheme" :items="3">
 				<template #Icon>
 					<Icon name="icon" pack="toggle"/>
 				</template>
-				Switch Theme
-			</Button>
+				<template #Text>Switch Theme</template>
+		</Dropdown>
 	</ButtonGroup>
 </template>
 
 <script>
 import Logo from "@/components/Logo"
-import Core, { ButtonGroup } from "@/components/Core"
+import Core, { ButtonGroup, Dropdown } from "@/components/Core"
 export default {
 	name: "FloatHeader",
 	components: {
 		Logo,
 		...Core,
 		ButtonGroup,
+		Dropdown
 	},
 	methods: {
 		toggleTheme() {

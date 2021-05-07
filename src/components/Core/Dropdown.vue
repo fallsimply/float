@@ -1,10 +1,11 @@
 <template>
 	<div class="dropdown" :open="open" :style="{'--ddItems': items}">
 		<div class="touchTarget" @click.self="toggle">
-			<Button icon @click.native="toggle">
+			<Button :icon="icon" @click.native="toggle">
 				<template #Icon>
 					<slot name="Icon"/>
 				</template>
+				<slot name="Text"/>
 			</Button>
 			<ButtonGroup ref="contents" :hidden="!show" :vertical="vertical">
 				<slot :handle="handle"/>
@@ -14,12 +15,13 @@
 </template>
 
 <script>
-import Core, { ButtonGroup } from "@/components/Core/"
+import test from "@/components/Core/"
+console.log(test)
+
 export default {
-	name: "ToolbarDropdown",
+	name: "Dropdown",
 	components: {
-		...Core,
-		ButtonGroup
+		...test,
 	},
 	data() {
 		return {
@@ -39,6 +41,7 @@ export default {
 			this.$emit("select", target.getAttribute("x-val"))
 		},
 	},
+	
 	props: {
 		items: {
 			type: Number,
@@ -50,8 +53,13 @@ export default {
 		vertical: {
 			type: Boolean,
 			default: false,
+		},
+		icon: {
+			type: Boolean,
+			default: false,
 		}
 	},
+	onMo
 }
 </script>
 

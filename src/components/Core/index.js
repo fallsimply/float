@@ -7,3 +7,4 @@ export default {
 }
 
 export { default as ButtonGroup } from "@/components/Core/ButtonGroup"
+export { default as Dropdown } from "@/components/Core/Dropdown"

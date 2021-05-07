@@ -11,10 +11,11 @@
 					<Icon name="link"/>
 				</template>
 			</Button>
-			<Dropdown :items="headings.length" @select="$emit('size', $event)">
+			<Dropdown :items="headings.length" @select="$emit('size', $event)" icon>
 				<template #Icon>
 					<Icon name="text_size" pack="format" caret/>
 				</template>
+				<template #Name></template>
 				<template v-slot="{ handle }">
 					<Button icon :class="`h${num}`" @click.stop.native="handle($event)" :x-val="`h${num}`" v-for="num in headings" :key="num">
 						<template #Icon>
@@ -29,8 +30,8 @@
 </template>
 
 <script>
-	import Core, { ButtonGroup } from "@/components/Core"
-	import { Dropdown, Prompt } from "@/components/Toolbar"
+	import Core, { ButtonGroup, Dropdown } from "@/components/Core"
+	import { Prompt } from "@/components/Toolbar"
 	export default {
 		name: "Toolbar",
 		data() {
